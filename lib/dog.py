@@ -30,13 +30,16 @@ class Dog:
             raise ValueError(
                 "Name must be string between 1 and 25 characters.")
 
-    def get_breed(self):
+    @property
+    def breed(self):
+        """The breed property"""
         return self._breed
 
-    def set_breed(self, breed):
+    @breed.setter
+    def breed(self, breed):
+        """Breed must be in the list of approved breeeds"""
         if breed in APPROVED_BREEDS:
             self._breed = breed
+
         else:
             raise ValueError("Breed must be in list of approved breeds.")
-
-    breed = property(get_breed, set_breed)
